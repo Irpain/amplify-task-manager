@@ -10,39 +10,40 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <Authenticator>
-      {({ signOut, user }) => (
-        <div className="App">
-          <header className="App-header">
-            <h1>Task Manager App</h1>
-            <p>Welcome, {user?.username || "User"}!</p>
-            <button className="sign-out-button" onClick={signOut}>
-              Sign Out
-            </button>
-          </header>
-          <main className="App-main">
-            <div className="container">
-              <div className="projects-section">
-                <h2>Your Projects</h2>
-                <ProjectForm />
-                <ProjectList onSelectProject={setSelectedProject} />
-              </div>
-              <div className="tasks-section">
-                <h2>Tasks</h2>
-                {selectedProject ? (
-                  <>
-                    <TaskForm project={selectedProject} />
-                    <TaskList project={selectedProject} />
-                  </>
-                ) : (
-                  <p>Please select a project to manage its tasks.</p>
-                )}
-              </div>
+    <div className="App">
+      <Authenticator>
+        {({ signOut, user }) => (
+          <div className="App-content">
+            <div className="auth-container">
+              <header className="App-header">
+                <h1>Welcome, {user?.username || "User"}!</h1>
+                <button className="sign-out-button" onClick={signOut}>
+                  Sign Out
+                </button>
+              </header>
+              <main className="App-main">
+                <div className="projects-section">
+                  <h2>Your Projects</h2>
+                  <ProjectForm />
+                  <ProjectList onSelectProject={setSelectedProject} />
+                </div>
+                <div className="tasks-section">
+                  <h2>Tasks</h2>
+                  {selectedProject ? (
+                    <>
+                      <TaskForm project={selectedProject} />
+                      <TaskList project={selectedProject} />
+                    </>
+                  ) : (
+                    <p>Please select a project to manage its tasks.</p>
+                  )}
+                </div>
+              </main>
             </div>
-          </main>
-        </div>
-      )}
-    </Authenticator>
+          </div>
+        )}
+      </Authenticator>
+    </div>
   );
 }
 

@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "amplifytastmanagerc732ac82": {}
+        "amplifytastmanagerc732ac82": {},
+        "userPoolGroups": {}
       },
       "hosting": {
         "amplifyhosting": {
