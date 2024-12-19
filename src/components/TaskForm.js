@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DataStore } from 'aws-amplify';
+import { DataStore } from '@aws-amplify/datastore';
 import { Task } from '../models';
 
 const TaskForm = ({ project }) => {

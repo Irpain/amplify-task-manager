@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DataStore } from 'aws-amplify';
+import { DataStore } from '@aws-amplify/datastore';
 import { Project } from '../models';
 
 const ProjectList = ({ onSelectProject }) => {
