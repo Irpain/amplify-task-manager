@@ -1,0 +1,28 @@
+type Project @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  name: String!
+  description: String
+  tasks: [Task] @connection(keyName: "byProject", fields: ["id"])
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Task @model
+  @key(name: "byProject", fields: ["projectID"], queryField: "tasksByProject")
+  @auth(rules: [{ allow: owner }, { allow: owner, operations: [read] }]) {
+  id: ID!
+  title: String!
+  description: String
+  status: Status!
+  deadline: AWSDateTime
+  projectID: ID!
+  assignedTo: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
