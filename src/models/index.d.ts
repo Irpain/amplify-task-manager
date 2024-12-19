@@ -18,6 +18,7 @@ type EagerProject = {
   readonly name: string;
   readonly description?: string | null;
   readonly tasks?: (Task | null)[] | null;
+  readonly owner?: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
 }
@@ -30,6 +31,7 @@ type LazyProject = {
   readonly name: string;
   readonly description?: string | null;
   readonly tasks: AsyncCollection<Task>;
+  readonly owner?: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
 }
@@ -50,6 +52,7 @@ type EagerTask = {
   readonly projectID: string;
   readonly project?: Project | null;
   readonly assignedTo?: string | null;
+  readonly owner?: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
 }
@@ -64,6 +67,7 @@ type LazyTask = {
   readonly projectID: string;
   readonly project: AsyncItem<Project | undefined>;
   readonly assignedTo?: string | null;
+  readonly owner?: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
 }

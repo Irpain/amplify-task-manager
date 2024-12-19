@@ -1,8 +1,11 @@
-type Project @model @auth(rules: [{ allow: owner }]) {
+type Project @model @auth(rules: [
+  { allow: owner, operations: [create, read, update, delete] }
+]) {
   id: ID! @primaryKey
   name: String!
   description: String
   tasks: [Task] @hasMany(indexName: "byProject", fields: ["id"])
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }]) # Restrict write access to owner
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }
@@ -16,6 +19,7 @@ type Task @model @auth(rules: [
   projectID: ID! @index(name: "byProject", sortKeyFields: ["createdAt"])
   project: Project @belongsTo(fields: ["projectID"])
   assignedTo: String
+  owner: String @auth(rules: [{ allow: owner, operations: [read] }]) # Restrict write access to owner
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }
