@@ -15,24 +15,31 @@ function App() {
         <div className="App">
           <header className="App-header">
             <h1>Task Manager App</h1>
-            <button onClick={signOut}>Sign Out</button>
+            <p>Welcome, {user?.username || "User"}!</p>
+            <button className="sign-out-button" onClick={signOut}>
+              Sign Out
+            </button>
+          </header>
+          <main className="App-main">
             <div className="container">
               <div className="projects-section">
+                <h2>Your Projects</h2>
                 <ProjectForm />
                 <ProjectList onSelectProject={setSelectedProject} />
               </div>
               <div className="tasks-section">
+                <h2>Tasks</h2>
                 {selectedProject ? (
                   <>
                     <TaskForm project={selectedProject} />
                     <TaskList project={selectedProject} />
                   </>
                 ) : (
-                  <p>Select a project to view its tasks.</p>
+                  <p>Please select a project to manage its tasks.</p>
                 )}
               </div>
             </div>
-          </header>
+          </main>
         </div>
       )}
     </Authenticator>

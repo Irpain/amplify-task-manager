@@ -1,73 +1,92 @@
-/* src/App.css */
 .App {
+  font-family: 'Arial', sans-serif;
   text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #f4f4f9;
+  color: #333;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
+}
+
+.App-header {
+  background-color: #004aad;
   color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.App-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.App-header p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.sign-out-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-out-button:hover {
+  background-color: #ff3333;
+}
+
+.App-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding: 20px;
 }
 
 .container {
   display: flex;
-  width: 80%;
-  margin-top: 20px;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .projects-section,
 .tasks-section {
   flex: 1;
-  margin: 0 10px;
-  background: #3c4048;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input {
-  padding: 10px;
-  margin: 5px 0;
-  width: 90%;
-  border: none;
-  border-radius: 4px;
+.projects-section h2,
+.tasks-section h2 {
+  color: #004aad;
+}
+
+.projects-section p,
+.tasks-section p {
+  color: #555;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 5px;
+  background-color: #004aad;
+  color: white;
   border: none;
-  border-radius: 4px;
-  background-color: #61dafb;
-  color: #282c34;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #21a1f1;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  background: #4c5058;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-li:hover {
-  background: #5c616c;
+  background-color: #003b8b;
 }
