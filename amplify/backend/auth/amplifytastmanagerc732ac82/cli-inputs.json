@@ -16,7 +16,7 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
-    "defaultPasswordPolicy": false,
+    "defaultPasswordPolicy": true,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
@@ -36,7 +36,7 @@
     "sharedId": "c732ac82",
     "resourceName": "amplifytastmanagerc732ac82",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "manual",
     "userPoolGroupList": [
       "irfansusers"
     ],
@@ -56,6 +56,16 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": []
+    "dependsOn": [],
+    "thirdPartyAuth": false,
+    "userPoolGroups": true,
+    "adminQueries": false,
+    "triggers": {},
+    "hostedUI": false,
+    "authProviders": [],
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    },
+    "permissions": []
   }
 }
