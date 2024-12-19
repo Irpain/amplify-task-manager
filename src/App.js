@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { withAuthenticator, Authenticator } from '@aws-amplify/ui-react';
 import ProjectList from './components/ProjectList';
 import ProjectForm from './components/ProjectForm';
 import TaskList from './components/TaskList';
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Task Manager App</h1>
-        <AmplifySignOut />
+        <Authenticator />
         <div className="container">
           <div className="projects-section">
             <ProjectForm />
