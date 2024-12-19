@@ -14,6 +14,15 @@
     "categories": {
       "auth": {
         "amplifytastmanagerc732ac82": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dk1ps19wt7h91",
+          "type": "cicd"
+        }
+      },
+      "api": {
+        "amplifytastmanager": {}
       }
     }
   }

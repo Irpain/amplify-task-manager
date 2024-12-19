@@ -1,6 +1,6 @@
-import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
+import { ModelInit, MutableModel, __modelMeta__, OptionallyManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
 export enum Status {
   PENDING = "PENDING",
@@ -12,22 +12,24 @@ export enum Status {
 
 type EagerProject = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Project, 'id'>;
+    identifier: OptionallyManagedIdentifier<Project, 'id'>;
   };
   readonly id: string;
   readonly name: string;
   readonly description?: string | null;
+  readonly tasks?: (Task | null)[] | null;
   readonly createdAt: string;
   readonly updatedAt: string;
 }
 
 type LazyProject = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Project, 'id'>;
+    identifier: OptionallyManagedIdentifier<Project, 'id'>;
   };
   readonly id: string;
   readonly name: string;
   readonly description?: string | null;
+  readonly tasks: AsyncCollection<Task>;
   readonly createdAt: string;
   readonly updatedAt: string;
 }
@@ -40,14 +42,13 @@ export declare const Project: (new (init: ModelInit<Project>) => Project) & {
 
 type EagerTask = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Task, 'id'>;
+    identifier: OptionallyManagedIdentifier<Task, 'id'>;
   };
   readonly id: string;
   readonly title: string;
   readonly description?: string | null;
-  readonly status: Status | keyof typeof Status;
-  readonly deadline?: string | null;
   readonly projectID: string;
+  readonly project?: Project | null;
   readonly assignedTo?: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
@@ -55,14 +56,13 @@ type EagerTask = {
 
 type LazyTask = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Task, 'id'>;
+    identifier: OptionallyManagedIdentifier<Task, 'id'>;
   };
   readonly id: string;
   readonly title: string;
   readonly description?: string | null;
-  readonly status: Status | keyof typeof Status;
-  readonly deadline?: string | null;
   readonly projectID: string;
+  readonly project: AsyncItem<Project | undefined>;
   readonly assignedTo?: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;

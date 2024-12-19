@@ -24,6 +24,22 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "tasks": {
+                    "name": "tasks",
+                    "isArray": true,
+                    "type": {
+                        "model": "Task"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "project"
+                        ]
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -45,6 +61,14 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "fields": [
+                            "id"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -91,28 +115,27 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "status": {
-                    "name": "status",
-                    "isArray": false,
-                    "type": {
-                        "enum": "Status"
-                    },
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "deadline": {
-                    "name": "deadline",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "projectID": {
                     "name": "projectID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
                     "attributes": []
+                },
+                "project": {
+                    "name": "project",
+                    "isArray": false,
+                    "type": {
+                        "model": "Project"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "projectID"
+                        ]
+                    }
                 },
                 "assignedTo": {
                     "name": "assignedTo",
@@ -146,11 +169,19 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
+                        "fields": [
+                            "id"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
                         "name": "byProject",
                         "fields": [
-                            "projectID"
-                        ],
-                        "queryField": "tasksByProject"
+                            "projectID",
+                            "createdAt"
+                        ]
                     }
                 },
                 {
@@ -161,20 +192,11 @@ export const schema = {
                                 "provider": "userPools",
                                 "ownerField": "owner",
                                 "allow": "owner",
-                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
+                                    "read",
                                     "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "operations": [
-                                    "read"
+                                    "delete"
                                 ],
                                 "identityClaim": "cognito:username"
                             }
@@ -196,5 +218,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "a2bd5c24103f2700027d7869e62a6e70"
+    "version": "d7f0c1a77c3e19743035b6991d1bf0c6"
 };

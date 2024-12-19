@@ -4,8 +4,10 @@
     "apiName": "amplifytastmanager",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authamplifytastmanagerc732ac82"
+    },
+    "additionalAuthTypes": [],
+    "conflictResolution": {}
   }
 }
